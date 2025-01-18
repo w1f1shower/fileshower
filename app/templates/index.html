@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Penetration Testing Lab</title>
+</head>
+<body>
+    <h1>Web Penetration Testing Lab</h1>
+
+    <form action="/deliver" method="post">
+        <input type="text" name="url" placeholder="Target URL" required>
+        <input type="text" name="file_path" placeholder="Payload Path" required>
+        <textarea name="headers" placeholder='Custom Headers JSON'></textarea>
+        <label>
+            <input type="checkbox" name="use_random_user_agent"> Use Random User-Agent
+        </label>
+        <button type="submit">Deliver Payload</button>
+    </form>
+
+    <form action="/create_payload" method="post">
+        <input type="text" name="file_type" placeholder="File Type (e.g., jpg)" required>
+        <textarea name="metadata" placeholder="Metadata (optional)"></textarea>
+        <button type="submit">Create Payload</button>
+    </form>
+</body>
+</html>
