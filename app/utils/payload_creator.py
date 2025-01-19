@@ -12,7 +12,7 @@ def create_payload_file(file_type, metadata=""):
             f.write(b"\xFF\xD8\xFF Payload JPG")
 
     if metadata:
-        c_lib = ctypes.CDLL("./c_lib/metadata_injector.so")
+        c_lib = ctypes.CDLL("../c_lib/metadata_injector.so")
         c_lib.add_metadata(file_path.encode("utf-8"), metadata.encode("utf-8"))
 
     return file_path
