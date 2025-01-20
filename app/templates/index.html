@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>F1l3Sh0w3r</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>F1l3Sh0w3r</title>
 </head>
-<body>
-    <h1>M3tadata Payload Inj3ct0r</h1>
+	<body>
+		<h1>M3tadata Payload Inj3ct0r</h1>
+		<section>
+			<form action="/deliver" method="post">
+				<input type="text" name="url" placeholder="Target URL" required>
+				<input type="text" name="file_path" placeholder="Payload Path" required>
+				<textarea name="headers" placeholder='Custom Headers JSON'></textarea>
+				<label>
+					<input type="checkbox" name="use_random_user_agent"> Use Random User-Agent
+				</label>
+				<button type="submit">Deliver Payload</button>
+			</form>
+		</section>
 
-    <form action="/deliver" method="post">
-        <input type="text" name="url" placeholder="Target URL" required>
-        <input type="text" name="file_path" placeholder="Payload Path" required>
-        <textarea name="headers" placeholder='Custom Headers JSON'></textarea>
-        <label>
-            <input type="checkbox" name="use_random_user_agent"> Use Random User-Agent
-        </label>
-        <button type="submit">Deliver Payload</button>
-    </form>
+		<section>
+			<form action="/inject_metadata" method="POST" enctype="multipart/form-data">
+				<label for="file">Select a File:</label>
+				<input type="file" id="file" name="file" required>
 
-    <form action="/create_payload" method="post">
-        <input type="text" name="file_type" placeholder="File Type (e.g., jpg)" required>
-        <textarea name="metadata" placeholder="Metadata (optional)"></textarea>
-        <button type="submit">Create Payload</button>
-    </form>
-</body>
+				<label for="metadata">Enter Metadata:</label>
+				<textarea id="metadata" name="metadata" rows="4" required></textarea>
+
+				<button type="submit">Inject Metadata</button>
+			</form>
+		</section>
+	</body>
 </html>
