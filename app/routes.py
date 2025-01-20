@@ -1,8 +1,10 @@
-from flask import Blueprint, request, jsonify, render_template
+from flask import Blueprint, current_app, request, jsonify, render_template
 from app.utils.request_modifier import deliver_payload
 from app.utils.metadata_injector import add_metadata
+import os
 
 app = Blueprint("app", __name__)
+
 
 @app.route("/")
 def index():
@@ -28,7 +30,7 @@ def inject_metadata():
         return jsonify({"error": "File and metadata are required!"}), 400
 
     # Save the uploaded file
-    file_path = os.path.join(app.config["UPLOAD_FOLDER"], uploaded_file.filename)
+    file_path = os.path.join(current_app.config["UPLOAD_FOLDER"], uploaded_file.filename)
     uploaded_file.save(file_path)
 
     # Call the add_metadata function to inject metadata
